@@ -44,31 +44,4 @@ class SpecificItemsViewByName(View):
         else:
             # Handle the case when the item is not found
             return JsonResponse({'message': 'Item not found'}, status=404)
-    def get(self, request, *args, **kwargs):
-        # Retrieve the JWT from cookies
-        jwt_token = request.COOKIES.get('jwt')
-
-        if jwt_token:
-            try:
-                # Decode the JWT to access user information
-                decoded_payload = jwt.decode(jwt_token, 'secret_key', algorithms=['HS256'])
-                user_id = decoded_payload['id']
-                
-                # Add your logic to retrieve and return user-specific data here
-                # For example:
-                user = User.objects.get(id=user_id)
-                user_data = {
-                    'id': user.id,
-                    'username': user.username,
-                    # Add more user data fields as needed
-                }
-                
-                return JsonResponse(user_data)
-            except jwt.ExpiredSignatureError:
-                return JsonResponse({'error': 'JWT has expired'}, status=401)
-            except jwt.DecodeError:
-                return JsonResponse({'error': 'Invalid JWT'}, status=401)
-        else:
-            return JsonResponse({'error': 'JWT not found'}, status=401)    
-
-
+    
