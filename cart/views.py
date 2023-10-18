@@ -75,3 +75,13 @@ class CartView(APIView):
             Carts.objects.filter(name=product_name_to_delete).delete()
 
             return JsonResponse({"message": f"Items with the name '{product_name_to_delete}' have been deleted from the cart"})
+    
+
+class DeleteallView(APIView):
+    
+        def delete(self,request):
+            
+            # Filter the cart items by name and delete them
+            Carts.objects.all().delete()
+
+            return JsonResponse({"message": "All items have been deleted"})
