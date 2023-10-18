@@ -8,4 +8,4 @@ class Products(models.Model):
     image = models.ImageField(upload_to='item_images/', null=True, blank=True)
    
     def __str__(self):
-        return self.title
+        return self.name
