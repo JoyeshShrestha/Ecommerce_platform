@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'reviews',
+    'seller',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # settings.py
 AUTH_USER_MODEL = 'registration.User'
+SELLER_AUTH_USER_MODEL = 'seller.SellerUser'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',

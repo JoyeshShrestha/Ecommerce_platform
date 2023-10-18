@@ -1,6 +1,5 @@
 # views.py
 from django.views.decorators.csrf import ensure_csrf_cookie
-from rest_framework import viewsets
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -11,9 +10,7 @@ from reviews.serializers import ReviewsSerializer
 from registration.models import User
 import jwt
 from reviews.models import Review
-class ItemListingViewSet(viewsets.ModelViewSet):
-    queryset = Products.objects.all()
-    serializer_class = ProductsSerializer
+
 
 class GetAllItemsView(View):
     def get(self, request, *args, **kwargs):
